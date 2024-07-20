@@ -1,0 +1,24 @@
+This file will include all the steps followed in the making of this project.
+1. First and the most important folder that we need to make 
+is the app folder. This will contain all the components that will be rendered on the server side.
+2. Inside the app the next thing we need is a layout.js and page.js. The layout.js will define
+   the main layout of the application. And the page.js is the main home page of our application.
+3. Keep track of the globalCss, and all the icons and images that we need here.
+4. Inside the app/page.jsx it will have our home page.
+
+5. Create all the files in the components folder. This components will lie outside the app folder. 
+   this will contain all our reusable UI components. and the next step 
+
+6. The first file that we are doing is creating a createPrompt folder inside the app folder and inside that folder we will have page.jsx.
+In here we will create a new prompt by passing a number of props to the reusable form component in which the handleSubmit will be the create prompt function.
+Inside the create prompt function we will be making a POST request to the api endpoint which we will create inside the api folder. In the post 
+request we will pass the prompt, userId, and the tag from the front-end. And in the route.js which is the api handler will create a new prompt in the 
+prompt model in mongodb.
+
+
+7. Next step is to create the feed. This will be done by creating the feed component in the component folder where we will make use 
+ of the PromptCard reusable component.
+8. Next step we will implement the profile page inside the profile folder. Inside the profile folder we will create a page.jsx which will be the main file which 
+will first fetch all the post belonging to the current user from the api endpoint and then pass all the post, the edit and delete function to the Profile component in the component
+folder. This is component will map all the post of the user to the reusable component promptcard. The main profile page also implements the handle delete ad the handledit functionality.
+Inside the prompt cards we will the usual prompt card but to display the edit and delete button we will check if the session user id is same as 
