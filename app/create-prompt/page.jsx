@@ -15,6 +15,10 @@ const CreatePrompt = () => {
   });
   const createPrompt = async (e) => {
     e.preventDefault(); //no reload
+    if(!session){
+      alert("You must signin first!!");
+      return;
+    }
     setSubmitting(true); //loader
     //create a prompt
     try {

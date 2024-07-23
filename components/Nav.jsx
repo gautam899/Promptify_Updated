@@ -11,7 +11,6 @@ const Nav = () => {
   const { data: session } = useSession();
   const [providers, setProviders] = useState(null);
   const [toggle, setToggle] = useState(false);
-  const router = useRouter();
   useEffect(() => {
     (async () => {
       const response = await getProviders();
@@ -21,9 +20,7 @@ const Nav = () => {
 
   const handleSignOut = async () => {
     setToggle(false);
-    await signOut();
-    // console.log("Redirecting to home");
-    router.push("/");
+    await signOut({ callbackUrl: "/" });
   };
   return (
     <nav className="flex-between w-full mb-16 py-3">

@@ -4,8 +4,11 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useSearchParams } from "next/navigation";
 import Form from "@components/Form";
+import { useSession } from "next-auth/react";
+
 const EditPrompt = () => {
   const router = useRouter();
+  const { data: session } = useSession();
   // Since we are updating a prompt belonging to a user we can
   // use the useSearchParams from the next to get the id of the user from the url
   const searchParams = useSearchParams();
@@ -36,6 +39,12 @@ const EditPrompt = () => {
 
   const updatePrompt = async (e) => {
     e.preventDefault(); //no reload
+    // if (!session) {
+    //   post.prompt = "";
+    //   post.tag = "";
+    //   alert("Please sign in first!!");
+    //   return;
+    // }
     setSubmitting(true); //loader
 
     if (!promptId) return alert("Prompt Id not found");
